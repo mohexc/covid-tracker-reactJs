@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { Row, Col, message, Typography, Select, Card } from 'antd';
+import { Row, Col, message, Typography, Select, Card, Tabs } from 'antd';
 import axios from 'axios';
 import InfoBox from './components/InfoBox';
 import MapCovid from './components/MapCovid';
@@ -7,6 +7,7 @@ import CountryTable from './components/CountryTable';
 import './styles/covid-19.less'
 import sortData from '../../utils/sortData';
 import LineGraph from './components/LineGraph';
+import DynamiChart from './components/DynamiChart';
 
 
 const Covid19TrackerPage = () => {
@@ -133,12 +134,28 @@ const Covid19TrackerPage = () => {
           zoom={mapZoom} />
       </Col>
       <Col xs={24} lg={8}>
-        <Card style={{ width: "100%", boxShadow: "0px 0px 5px rgba(0, 0, 0, 0.1)" }}>
-          <h1>Live Cases by Country </h1>
-          <CountryTable countries={tableData} />
-          <h1>Worldwide new cases</h1>
-          <LineGraph casesType={casesType} />
-        </Card>
+
+        <Tabs
+          defaultActiveKey="2"
+          type="card"
+          style={{
+            width: "100%",
+            boxShadow: "0px 0px 5px rgba(0, 0, 0, 0.1)",
+            backgroundColor: "white",
+            padding: "0px 0.5rem",
+
+          }}>
+          <Tabs.TabPane tab="Live Cases by Country" key="Live Cases by Country">
+            <div >
+              <CountryTable countries={tableData} />
+              <h1>Worldwide new cases</h1>
+              <LineGraph casesType={casesType} />
+            </div>
+          </Tabs.TabPane>
+          <Tabs.TabPane tab="Live 1month" key="2">
+            <DynamiChart />
+          </Tabs.TabPane>
+        </Tabs>
       </Col>
     </Row >
   );
