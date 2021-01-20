@@ -16,7 +16,7 @@ const Covid19TrackerPage = () => {
   const [tableData, setTableData] = useState([])
   // eslint-disable-next-line
   const [mapCountriesData, setMapCountriesData] = useState([]);
-  const [casesType] = useState("cases");
+  const [casesType, setCasesType] = useState("cases");
   const [mapCenter, setMapCenter] = useState({ lat: 34.80746, lng: -40.4796 });
   const [mapZoom, setMapZoom] = useState(3);
 
@@ -96,12 +96,38 @@ const Covid19TrackerPage = () => {
         </Row>
 
         <Row gutter={[24, 24]} justify='space-between'>
-          <Col xs={8}><InfoBox title="Conranvirus" cases={countryInfo.todayCases} total={countryInfo.cases} /></Col>
-          <Col xs={8}><InfoBox title="Recovered" cases={countryInfo.todayRecovered} total={countryInfo.recovered} /></Col>
-          <Col xs={8}><InfoBox title="Deaths" cases={countryInfo.todayDeaths} total={countryInfo.deaths} /></Col>
+          <Col xs={8}>
+            <InfoBox
+              isRed
+              active={casesType === "cases"}
+              onClick={() => setCasesType("cases")}
+              color="black" title="Conranvirus"
+              cases={countryInfo.todayCases}
+              total={countryInfo.cases} />
+          </Col>
+          <Col xs={8}>
+            <InfoBox
+              isRed
+              active={casesType === "recovered"}
+              onClick={() => setCasesType("recovered")}
+              color="green"
+              title="Recovered"
+              cases={countryInfo.todayRecovered}
+              total={countryInfo.recovered} />
+          </Col>
+          <Col xs={8}>
+            <InfoBox
+              isRed
+              active={casesType === "deaths"}
+              onClick={() => setCasesType("deaths")}
+              color="red"
+              title="Deaths"
+              cases={countryInfo.todayDeaths}
+              total={countryInfo.deaths} /></Col>
         </Row>
 
         <MapCovid
+          casesType={casesType}
           mapCountriesData={mapCountriesData}
           center={mapCenter}
           zoom={mapZoom} />
