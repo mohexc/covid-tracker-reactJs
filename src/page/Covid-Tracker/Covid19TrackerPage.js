@@ -82,7 +82,7 @@ const Covid19TrackerPage = () => {
     <Row gutter={[24, 24]} style={{ height: "100%" }}>
       <Col xs={24} lg={16}>
         <Row align="middle" justify="space-between">
-          <Typography.Title level={3}>Covid-19 Tracker</Typography.Title>
+          <Typography.Title level={3}>COVID-19 TRACKER</Typography.Title>
           <Select
             value={countryCode}
             showSearch
@@ -101,7 +101,7 @@ const Covid19TrackerPage = () => {
               isRed
               active={casesType === "cases"}
               onClick={() => setCasesType("cases")}
-              color="black" title="Conranvirus"
+              color="black" title="Conranvirus cases"
               cases={countryInfo.todayCases}
               total={countryInfo.cases} />
           </Col>

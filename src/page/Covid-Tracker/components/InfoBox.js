@@ -12,7 +12,7 @@ const InfoBox = ({ onClick, title, cases, total, color, active, isRed, }) => {
       style={{ width: "100%", boxShadow: "0px 0px 5px rgba(0, 0, 0, 0.1)", cursor: 'pointer' }}>
       <h1 style={{ color: color }}>{title}</h1>
       <Typography.Title level={4} style={{ color: color }}>{prettyPrintStat(cases)}</Typography.Title>
-      <p style={{ color: color }}>{numeral(total).format("0.0a")} total</p>
+      <p style={{ color: color }}>{numeral(total).format("0.0a")} Total</p>
     </Card>
   );
 }

@@ -1,21 +1,21 @@
 import React from 'react';
-import { Layout, Menu } from 'antd';
+import { Avatar, Layout, Menu, Row } from 'antd';
 import { UserOutlined, VideoCameraOutlined, UploadOutlined, } from '@ant-design/icons';
 import { Link } from 'react-router-dom';
+import imageProfile from '../asset/profile.jpg'
 
 const AppSider = ({ collapsed }) => {
 
   return (
     <Layout.Sider collapsedWidth={80} collapsed={collapsed}>
-      <div style={{ backgroundColor: "whitesmoke", margin: "1rem" }}>
+      <Row justify="center" align="middle" style={{ margin: "1rem" }}>
+
         {collapsed
-          ? <h1 style={{ textAlign: "center" }}>C-19 </h1>
-          : <h1 style={{ fontWeight: 'bold', margin: "2rem" }}>
-            <p>Covid-19</p>
-            <p>Tracker's</p>
-          </h1>
+          ? <div style={{ border: "2px white solid", borderRadius: "50%" }}><Avatar src={imageProfile} /></div>
+          : <div style={{ border: "2px white solid", borderRadius: "25%" }}><img src={imageProfile} alt="profile" style={{ height: "100px", borderRadius: "20%" }} /></div>
         }
-      </div>
+
+      </Row>
       <Menu theme="dark" mode="inline" >
         <Menu.Item key="1" icon={<UserOutlined />}>
           <Link to="/">Who am i</Link>
