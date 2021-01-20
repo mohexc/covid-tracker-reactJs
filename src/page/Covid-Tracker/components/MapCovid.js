@@ -1,10 +1,11 @@
-import React, { useState, useEffect } from 'react';
+import React from 'react';
 import { Card } from 'antd';
 import { MapContainer, TileLayer } from "react-leaflet";
 import 'leaflet/dist/leaflet.css';
 import ChangeView from './ChangeView';
+import showDataOnMap from '../../../utils/showDataOnMap'
 
-const MapCovid = ({ countries, casesType, center, zoom }) => {
+const MapCovid = ({ casesType, mapCountriesData, center, zoom }) => {
 
   return (
     <Card className="map-covide" >
@@ -14,6 +15,7 @@ const MapCovid = ({ countries, casesType, center, zoom }) => {
           attribution='&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
           url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
         />
+        {showDataOnMap(mapCountriesData, casesType)}
       </MapContainer>
     </Card >
   );

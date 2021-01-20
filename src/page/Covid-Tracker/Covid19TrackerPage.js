@@ -15,10 +15,11 @@ const Covid19TrackerPage = () => {
   const [countryInfo, setCountryInfo] = useState({})
   const [tableData, setTableData] = useState([])
   // eslint-disable-next-line
-  const [mapCountries, setMapCountries] = useState([]);
+  const [mapCountriesData, setMapCountriesData] = useState([]);
   const [casesType] = useState("cases");
   const [mapCenter, setMapCenter] = useState({ lat: 34.80746, lng: -40.4796 });
   const [mapZoom, setMapZoom] = useState(3);
+
 
   useEffect(() => {
     getCountriesDataDropDrown()
@@ -36,6 +37,7 @@ const Covid19TrackerPage = () => {
         }
       })
       const sortedData = sortData(data)
+      setMapCountriesData(data)
       setTableData(sortedData)
       setCountries(mappedContries)
     } catch (error) {
@@ -100,6 +102,7 @@ const Covid19TrackerPage = () => {
         </Row>
 
         <MapCovid
+          mapCountriesData={mapCountriesData}
           center={mapCenter}
           zoom={mapZoom} />
       </Col>
