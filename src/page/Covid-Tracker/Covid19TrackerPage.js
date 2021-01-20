@@ -66,7 +66,7 @@ const Covid19TrackerPage = () => {
         setMapZoom(3);
         return
       }
-      setMapCenter([data.countryInfo.lat, data.countryInfo.long])
+      setMapCenter({ lat: data.countryInfo.lat, lng: data.countryInfo.long })
       setMapZoom(4);
     } catch (error) {
       const result = error.response
