@@ -10,7 +10,9 @@ const AppSider = ({ collapsed }) => {
     <Layout.Sider collapsedWidth={80} collapsed={collapsed}>
 
       {collapsed
-        ? <Avatar src={imageProfile} style={{ border: "2px white solid", borderRadius: "50%" }} />
+        ? <Row justify="center" align="middle" style={{ height: '100px' }}>
+          <Avatar src={imageProfile} style={{ border: "2px white solid", borderRadius: "50%" }} />
+        </Row>
         : <div style={{ backgroundColor: "black", height: "200px", position: "relative" }}>
           <h4 style={{
             color: 'white',
