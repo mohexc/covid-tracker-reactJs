@@ -5,7 +5,7 @@ import AppFooter from './layouts/AppFooter';
 import AppHeader from './layouts/AppHeader'
 import { Layout } from 'antd'
 import { BrowserRouter, Switch, Route, } from "react-router-dom";
-import WhoAmIPage from './page/WhoAmI/WhoAmIPage';
+// import WhoAmIPage from './page/WhoAmI/WhoAmIPage';
 import Covid19TrackerPage from './page/Covid-Tracker/Covid19TrackerPage';
 
 

@@ -1,6 +1,10 @@
 import React from 'react';
 import { Avatar, Layout, Menu, Row } from 'antd';
-import { VideoCameraOutlined, InstagramOutlined, AppstoreOutlined, IdcardOutlined } from '@ant-design/icons';
+import {
+  VideoCameraOutlined, InstagramOutlined,
+  // AppstoreOutlined, 
+  IdcardOutlined
+} from '@ant-design/icons';
 import { Link } from 'react-router-dom';
 import imageProfile from '../asset/profile.jpg'
 
@@ -50,10 +54,10 @@ const AppSider = ({ collapsed }) => {
           <Link to="/">covid-19 tracker</Link>
         </Menu.Item>
         <Menu.Item key="3" icon={<InstagramOutlined />} >
-          <Link to="/instragram">instragram</Link>
+          instragram
         </Menu.Item>
         <Menu.Item key="4" icon={<IdcardOutlined />} >
-          <Link to="/aboutme">about me</Link>
+          about me
         </Menu.Item>
       </Menu>
     </Layout.Sider>
