@@ -136,7 +136,7 @@ const Covid19TrackerPage = () => {
       <Col xs={24} lg={8}>
 
         <Tabs
-          defaultActiveKey="2"
+          defaultActiveKey="1"
           type="card"
           style={{
             width: "100%",

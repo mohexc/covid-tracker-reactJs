@@ -16,6 +16,7 @@
     "react": "^16.13.1",
     "react-chartjs-2": "^2.11.1",
     "react-dom": "^16.13.1",
+    "react-dynamic-charts": "^1.0.5",
     "react-leaflet": "^3.0.5",
     "react-router-dom": "^5.2.0",
     "react-scripts": "3.4.3"
