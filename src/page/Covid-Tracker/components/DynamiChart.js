@@ -1,6 +1,8 @@
 import React, { useEffect, useState } from 'react';
 import { DynamicBarChart } from 'react-dynamic-charts';
+import 'react-dynamic-charts/dist/index.css';
 import axios from 'axios';
+import { message } from 'antd';
 
 const DynamiChart = () => {
   const [state, setstate] = useState()
@@ -10,36 +12,64 @@ const DynamiChart = () => {
   }, [])
 
   const getContriesInfo = async () => {
-    const { data } = await axios.get(`https://disease.sh/v3/covid-19/historical?lastdays=30`)
+    try {
+      const { data } = await axios.get(`https://disease.sh/v3/covid-19/historical?lastdays=150`)
 
-    const date = Object.keys(data[0].timeline.cases)
+      const date = Object.keys(data[0].timeline.cases)
 
-    const countryAndCases = data.map(d => ({ country: d.country, cases: d.timeline.cases }))
-    const mappedValues = countryAndCases.map(d => {
-      const values = []
-      for (const property in d.cases) {
-        values.push({
-          "id": `${d.country}`,
-          "label": `${d.country}`,
-          "value": `${d.cases[property]}`,
-          "color": ["black"]
-        })
-      }
-      return values
-    })
+      const countryAndCases = data.map(d => ({ country: d.country, cases: d.timeline.cases }))
+      const mappedValues = countryAndCases.map((d, index) => {
+        const values = []
+        for (const property in d.cases) {
+          values.push({
+            "id": `${d.country}`,
+            "label": `${d.country}`,
+            "value": `${d.cases[property]}`,
+          })
+        }
+        return values
+      })
+      console.log(mappedValues)
+      debugger
 
-    const mappedData2 = date.map((day) => {
-      const values = mappedValues.map((v, index) => v[index])
-      return {
-        "name": `${day}`,
-        "values": values
-      }
-    })
-    setstate(mappedData2)
+      const mappedName = date.map((day, index) => {
+        const values = mappedValues.map((v) => v[index])
+        return {
+          "name": `${day}`,
+          "values": values
+        }
+      })
+      setstate(mappedName)
+      debugger
+    } catch (error) {
+      const result = error.response
+        ? error.response.data.message
+        : error.message
+      message.error(result)
+    }
+
   }
   return (
-    <div>
-      <DynamicBarChart data={state} iterationTimeout={30000} />
+    <div style={{
+      height: "620px",
+      overflowY: "auto",
+      width: "100%"
+    }}>
+      {state && <DynamicBarChart
+        data={state}
+        barHeight={15}
+        // mainWrapperStyles={{
+        //   width: "100px"
+        // }}
+        chartWrapperStyles={{
+          width: '100%'
+        }}
+        iterationTitleStyles={{
+          fontSize: '25px',
+          textAlign: 'left'
+        }}
+      />}
+
     </div>
   );
 }

@@ -81,7 +81,7 @@ const Covid19TrackerPage = () => {
   }
   return (
     <Row gutter={[24, 24]} style={{ height: "100%" }}>
-      <Col xs={24} lg={16}>
+      <Col xs={24} lg={14}>
         <Row align="middle" justify="space-between">
           <Typography.Title level={3}>COVID-19 TRACKER</Typography.Title>
           <Select
@@ -133,10 +133,10 @@ const Covid19TrackerPage = () => {
           center={mapCenter}
           zoom={mapZoom} />
       </Col>
-      <Col xs={24} lg={8}>
+      <Col xs={24} lg={10}>
 
         <Tabs
-          defaultActiveKey="1"
+          defaultActiveKey="2"
           type="card"
           style={{
             width: "100%",
@@ -152,7 +152,7 @@ const Covid19TrackerPage = () => {
               <LineGraph casesType={casesType} />
             </div>
           </Tabs.TabPane>
-          <Tabs.TabPane tab="Live 1month" key="2">
+          <Tabs.TabPane tab="HISTORY 150 DAY" key="2">
             <DynamiChart />
           </Tabs.TabPane>
         </Tabs>
