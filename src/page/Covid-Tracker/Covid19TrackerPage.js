@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { Row, Col, message, Typography, Select, Card, Tabs } from 'antd';
+import { Row, Col, message, Typography, Select, Tabs } from 'antd';
 import axios from 'axios';
 import InfoBox from './components/InfoBox';
 import MapCovid from './components/MapCovid';

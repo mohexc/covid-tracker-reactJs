@@ -1,6 +1,6 @@
 import React from 'react';
 import { Avatar, Layout, Menu, Row } from 'antd';
-import { UserOutlined, VideoCameraOutlined, InstagramOutlined, AppstoreOutlined, IdcardOutlined } from '@ant-design/icons';
+import { VideoCameraOutlined, InstagramOutlined, AppstoreOutlined, IdcardOutlined } from '@ant-design/icons';
 import { Link } from 'react-router-dom';
 import imageProfile from '../asset/profile.jpg'
 
