@@ -22,10 +22,8 @@ const App = () => {
 
             <div style={{ minHeight: '80%', padding: '1rem' }}>
               <Switch>
-                <Route exact path="/covid19-tracker"><Covid19TrackerPage /></Route>
-                <Route exact path="/"><WhoAmIPage /></Route>
+                <Route exact path="/"><Covid19TrackerPage /></Route>
               </Switch>
-
             </div>
 
           </Layout.Content>

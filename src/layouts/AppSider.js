@@ -43,11 +43,11 @@ const AppSider = ({ collapsed }) => {
       }
 
       <Menu theme="dark" mode="inline" style={{ marginTop: "50px" }}>
-        <Menu.Item key="1" icon={<AppstoreOutlined />}>
+        {/* <Menu.Item key="1" icon={<AppstoreOutlined />}>
           <Link to="/">app store</Link>
-        </Menu.Item>
+        </Menu.Item> */}
         <Menu.Item key="2" icon={<VideoCameraOutlined />}>
-          <Link to="/covid19-tracker">covid-19 tracker</Link>
+          <Link to="/">covid-19 tracker</Link>
         </Menu.Item>
         <Menu.Item key="3" icon={<InstagramOutlined />} >
           <Link to="/instragram">instragram</Link>
