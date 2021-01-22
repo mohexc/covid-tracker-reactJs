@@ -22,15 +22,23 @@ const AppSider = ({ collapsed }) => {
             color: 'white',
             fontWeight: "bolder",
             position: "absolute",
-            bottom: "40px",
+            bottom: "85px",
             left: '35px',
             fontFamily: 'Muli,Roboto,"Helvetica",Arial,sans-serif'
           }}>Nut Prohmpiriya</h4>
+          <h4 style={{
+            color: 'white',
+            fontWeight: "bolder",
+            position: "absolute",
+            bottom: "60px",
+            left: '22px',
+            fontFamily: 'Muli,Roboto,"Helvetica",Arial,sans-serif'
+          }}>Solfware developer Jr.</h4>
           <h5 style={{
             color: 'white',
             fontWeight: "bolder",
             position: "absolute",
-            bottom: "70px",
+            bottom: "110px",
             left: '10px',
             fontFamily: 'Muli,Roboto,"Helvetica",Arial,sans-serif'
           }}>nut.prohmpiriya@gmail.com</h5>
@@ -39,7 +47,7 @@ const AppSider = ({ collapsed }) => {
             borderRadius: "60%",
             border: "10px black solid",
             position: "absolute",
-            bottom: "-50px",
+            bottom: "-40px",
             left: '50px'
           }}
           />
