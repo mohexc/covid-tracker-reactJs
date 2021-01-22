@@ -54,7 +54,8 @@ const AppSider = ({ collapsed }) => {
           <Link to="/">covid-19 tracker</Link>
         </Menu.Item>
         <Menu.Item key="3" icon={<InstagramOutlined />} >
-          instragram
+          <Link to="/instragram">instragram</Link>
+
         </Menu.Item>
         <Menu.Item key="4" icon={<IdcardOutlined />} >
           about me

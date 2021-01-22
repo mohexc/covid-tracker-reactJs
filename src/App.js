@@ -7,6 +7,7 @@ import { Layout } from 'antd'
 import { BrowserRouter, Switch, Route, } from "react-router-dom";
 // import WhoAmIPage from './page/WhoAmI/WhoAmIPage';
 import Covid19TrackerPage from './page/Covid-Tracker/Covid19TrackerPage';
+import InstragramPage from './page/InstragramClone/InstragramPage';
 
 
 // main
@@ -23,6 +24,7 @@ const App = () => {
             <div style={{ minHeight: '80%', padding: '1rem' }}>
               <Switch>
                 <Route exact path="/"><Covid19TrackerPage /></Route>
+                <Route exact path="/instragram"><InstragramPage /></Route>
               </Switch>
             </div>
 
