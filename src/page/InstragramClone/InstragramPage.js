@@ -2,8 +2,8 @@ import React, { useEffect, useState } from 'react';
 import { Row, Col, message } from 'antd';
 import './styles/Instragramm.less'
 import Post from './components/Post';
-import SignIn from "./components/SignIn"
 import { db } from '../../config/firebase';
+import AuthControl from '../Auth/AuthControl';
 
 // main
 const InstragramPage = () => {
@@ -44,7 +44,7 @@ const InstragramPage = () => {
         </Col>
         <Col xs={8} style={{ padding: "1rem" }}>
 
-          <SignIn />
+          <AuthControl />
 
         </Col>
       </Row>
