@@ -46,9 +46,9 @@ const SingIn = ({ setIsSignUp }) => {
             <Checkbox>Remember me</Checkbox>
           </Form.Item>
 
-          <a className="login-form-forgot" href="">
+          <span style={{ color: '#3DB489' }} className="login-form-forgot" >
             Forgot password
-        </a>
+        </span>
         </Form.Item>
 
         <Form.Item>

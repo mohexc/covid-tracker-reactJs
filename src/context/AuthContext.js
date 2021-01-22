@@ -3,15 +3,16 @@ import React, { useState, useContext, useEffect } from 'react'
 const Context = React.createContext()
 const AuthContext = ({ children }) => {
 
+  // eslint-disable-next-line
   const [user, setuser] = useState()
 
   useEffect(() => {
 
   }, [])
 
-  const signin = ({ email, password }) => {
+  // const signin = ({ email, password }) => {
 
-  }
+  // }
 
 
   return (
