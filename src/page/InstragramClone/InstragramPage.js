@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { Row, Col, message } from 'antd';
 import './styles/Instragramm.less'
 import Post from './components/Post';
+import SignIn from "./components/SignIn"
 import { db } from '../../config/firebase';
 
 // main
@@ -42,7 +43,9 @@ const InstragramPage = () => {
           {posts.map(d => <Post username={d.username} caption={d.caption} imageUrl={d.imageUrl} />)}
         </Col>
         <Col xs={8} style={{ padding: "1rem" }}>
-          <div style={{ backgroundColor: "white" }}>Siderbaser</div>
+
+          <SignIn />
+
         </Col>
       </Row>
     </div>
