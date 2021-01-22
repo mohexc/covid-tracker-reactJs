@@ -1,28 +1,10 @@
 import React, { useEffect, useState } from 'react';
-import { Row, Col, Typography, message } from 'antd';
+import { Row, Col, message } from 'antd';
 import './styles/Instragramm.less'
 import Post from './components/Post';
-import imageCar2 from "../../asset/imageCar.jpg"
 import { db } from '../../config/firebase';
 
-const data = [
-  {
-    username: "nat prohmpiriya",
-    caption: " wow this is firebase 🚀🚀",
-    imageUrl: imageCar2
-  },
-  {
-    username: "nat prohmpiriya",
-    caption: " wow this is firebase 🚀🚀",
-    imageUrl: imageCar2
-  },
-  {
-    username: "nat prohmpiriya",
-    caption: " wow this is firebase 🚀🚀",
-    imageUrl: imageCar2
-  },
-]
-
+// main
 const InstragramPage = () => {
 
   const [posts, setPosts] = useState([])
@@ -30,7 +12,6 @@ const InstragramPage = () => {
   useEffect(() => {
     fetchPost()
     // eslint-disable-next-line 
-
   }, [])
 
   const fetchPost = async () => {
