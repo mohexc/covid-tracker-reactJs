@@ -56,8 +56,10 @@ const SingIn = ({ setIsSignUp }) => {
             Sign In
         </Button>
           <span className="mx1"> Or</span>
-          <span style={{ color: '#3DB489' }}
-            onClick={() => setIsSignUp(false)}>
+          <span
+            className="pointer"
+            style={{ color: '#3DB489' }}
+            onClick={() => setIsSignUp(true)}>
             register now!
           </span>
         </Form.Item>
