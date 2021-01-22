@@ -31,7 +31,7 @@ const AppSider = ({ collapsed }) => {
             fontWeight: "bolder",
             position: "absolute",
             bottom: "60px",
-            left: '22px',
+            left: '20ßpx',
             fontFamily: 'Muli,Roboto,"Helvetica",Arial,sans-serif'
           }}>Solfware developer Jr.</h4>
           <h5 style={{
