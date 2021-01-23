@@ -139,6 +139,7 @@ const Covid19TrackerPage = () => {
           defaultActiveKey="2"
           type="card"
           style={{
+            height: "678px",
             width: "100%",
             boxShadow: "0px 0px 5px rgba(0, 0, 0, 0.1)",
             backgroundColor: "white",
@@ -152,7 +153,7 @@ const Covid19TrackerPage = () => {
               <LineGraph casesType={casesType} />
             </div>
           </Tabs.TabPane>
-          <Tabs.TabPane tab="HISTORY 150 DAY" key="2">
+          <Tabs.TabPane tab="HISTORY CASES" key="2">
             <DynamiChart />
           </Tabs.TabPane>
         </Tabs>

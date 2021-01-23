@@ -9,33 +9,36 @@ import { BrowserRouter, Switch, Route, } from "react-router-dom";
 import Covid19TrackerPage from './page/Covid-Tracker/Covid19TrackerPage';
 import InstragramPage from './page/InstragramClone/InstragramPage';
 import AuthContext from './context/AuthContext';
+import { QueryClient, QueryClientProvider } from 'react-query'
 
+const queryClient = new QueryClient()
 
 // main
 const App = () => {
   const [collapsed, setcollapsed] = useState(false)
   return (
     <BrowserRouter>
+      <QueryClientProvider client={queryClient}>
+        <AuthContext>
+          <Layout>
+            <AppSider collapsed={collapsed} />
+            <Layout style={{ minHeight: '100vh' }}>
+              <AppHeader setcollapsed={setcollapsed} collapsed={collapsed} />
+              <Layout.Content >
 
-      <AuthContext>
-        <Layout>
-          <AppSider collapsed={collapsed} />
-          <Layout style={{ minHeight: '100vh' }}>
-            <AppHeader setcollapsed={setcollapsed} collapsed={collapsed} />
-            <Layout.Content >
+                <div style={{ minHeight: '80%', padding: '1rem' }}>
+                  <Switch>
+                    <Route exact path="/"><Covid19TrackerPage /></Route>
+                    <Route exact path="/instragram"><InstragramPage /></Route>
+                  </Switch>
+                </div>
 
-              <div style={{ minHeight: '80%', padding: '1rem' }}>
-                <Switch>
-                  <Route exact path="/"><Covid19TrackerPage /></Route>
-                  <Route exact path="/instragram"><InstragramPage /></Route>
-                </Switch>
-              </div>
-
-            </Layout.Content>
-            <AppFooter />
+              </Layout.Content>
+              <AppFooter />
+            </Layout>
           </Layout>
-        </Layout>
-      </AuthContext>
+        </AuthContext>
+      </QueryClientProvider>
     </BrowserRouter >
   );
 }
