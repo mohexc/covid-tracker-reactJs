@@ -1,11 +1,28 @@
 import React from 'react'
-import { Form, Input, Button } from 'antd';
+import { Form, Input, Button, message } from 'antd';
 import { UserOutlined, LockOutlined, MailOutlined } from '@ant-design/icons';
+import { useAuthContext } from '../../context/AuthContext';
+
 
 // main
 const SignUp = ({ setIsSignUp }) => {
-  const onFinish = (values) => {
-    console.log('Received values of form: ', values);
+
+  const { register } = useAuthContext()
+
+  const onFinish = async (values) => {
+    try {
+      console.log('Received values of form: ', values);
+      const result = await register(values.username, values.email, values.password)
+      message.success('Success')
+    } catch (error) {
+      const err = error.res
+        ? error.response.data.message
+        : error.message
+      message.error(err)
+      debugger
+    }
+
+
   };
 
   return (
@@ -22,7 +39,7 @@ const SignUp = ({ setIsSignUp }) => {
         </Form.Item>
 
         <Form.Item
-          name="Username"
+          name="username"
           rules={[{ required: true, message: 'Please input your Email!', },]}>
           <Input prefix={<UserOutlined className="site-form-item-icon" />} placeholder="Username" />
         </Form.Item>

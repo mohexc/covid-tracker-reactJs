@@ -17,9 +17,9 @@ const queryClient = new QueryClient()
 const App = () => {
   const [collapsed, setcollapsed] = useState(false)
   return (
-    <BrowserRouter>
-      <QueryClientProvider client={queryClient}>
-        <AuthContext>
+    <AuthContext>
+      <BrowserRouter>
+        <QueryClientProvider client={queryClient}>
           <Layout>
             <AppSider collapsed={collapsed} />
             <Layout style={{ minHeight: '100vh' }}>
@@ -37,9 +37,9 @@ const App = () => {
               <AppFooter />
             </Layout>
           </Layout>
-        </AuthContext>
-      </QueryClientProvider>
-    </BrowserRouter >
+        </QueryClientProvider>
+      </BrowserRouter >
+    </AuthContext>
   );
 }
 

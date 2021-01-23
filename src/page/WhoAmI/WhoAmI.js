@@ -1,13 +1,13 @@
 import React from 'react';
 import { Row, Col } from 'antd';
 
-const WhoAmIPage = () => {
+const WhoAmI = () => {
 
   return (
     <Row>
-      <Col>WhoAmIPage </Col>
+      <Col>WhoAmI </Col>
     </Row>
   );
 }
 
-export default WhoAmIPage;
+export default WhoAmI;

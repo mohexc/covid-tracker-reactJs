@@ -2,10 +2,14 @@
 import React from 'react'
 import { Form, Input, Button, Checkbox } from 'antd';
 import { UserOutlined, LockOutlined } from '@ant-design/icons';
+import { useAuthContext } from '../../context/AuthContext';
 // main
 const SingIn = ({ setIsSignUp }) => {
+  const { signin } = useAuthContext()
   const onFinish = (values) => {
+
     console.log('Received values of form: ', values);
+    signin(values.email, values.password)
   };
 
   return (
