@@ -153,8 +153,11 @@ const Covid19TrackerPage = () => {
               <LineGraph casesType={casesType} />
             </div>
           </Tabs.TabPane>
-          <Tabs.TabPane tab="HISTORY CASES" key="2">
+          <Tabs.TabPane tab="HISTORY CASES" key="2" >
+
             <DynamiChart />
+
+
           </Tabs.TabPane>
         </Tabs>
       </Col>

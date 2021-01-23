@@ -63,11 +63,7 @@ const DynamiChart = () => {
     return <span>Error: {error.message}</span>
   }
   return (
-    <div style={{
-
-      overflowY: "auto",
-      width: "100%"
-    }}>
+    <div >
 
       <Select style={{ width: "200px" }} value={state} onChange={handleChangeSelect}>
         <Select.Option value={30}>30 DAY</Select.Option>
@@ -77,14 +73,16 @@ const DynamiChart = () => {
         <Select.Option value={150}>150 DAY</Select.Option>
         <Select.Option value={200}>200 DAY</Select.Option>
       </Select>
-      <DynamicBarChart
-        data={data}
-        barHeight={15}
-        chartWrapperStyles={{ width: '100%' }}
-        iterationTitleStyles={{ fontSize: '25px', textAlign: 'left' }}
-      />
-
+      <div style={{ overflowY: "auto", height: '600px' }}>
+        <DynamicBarChart
+          data={data}
+          barHeight={15}
+          chartWrapperStyles={{ width: '100%' }}
+          iterationTitleStyles={{ fontSize: '25px', textAlign: 'left' }}
+        />
+      </div>
     </div>
+
   );
 }
 
