@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useState } from 'react';
 import { DynamicBarChart } from 'react-dynamic-charts';
 import 'react-dynamic-charts/dist/index.css';
 import axios from 'axios';
