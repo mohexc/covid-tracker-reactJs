@@ -11,6 +11,7 @@ const AuthContext = ({ children }) => {
   useEffect(() => {
     const unsubscribe = auth.onAuthStateChanged((authUser) => {
       const user = authUser ? setuser(authUser.user) : setuser(null)
+      return user
     })
     unsubscribe()
   }, [])

@@ -11,9 +11,9 @@ const SignUp = ({ setIsSignUp }) => {
 
   const onFinish = async (values) => {
     try {
-      console.log('Received values of form: ', values);
       const result = await register(values.username, values.email, values.password)
       message.success('Success')
+      return result
     } catch (error) {
       const err = error.res
         ? error.response.data.message
