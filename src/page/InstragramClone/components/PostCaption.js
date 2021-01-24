@@ -14,10 +14,10 @@ const PostCaption = ({ user }) => {
       <Card style={{ marginBottom: '1rem' }}>
         <Row gutter={[24, 24]} justify="start" style={{ marginBottom: '0rem', paddingBottom: '0rem' }}>
 
-          <Col xs={6}>
+          <Col xs={24} lg={6}>
             <strong>{user.displayName}</strong>
           </Col>
-          <Col xs={18}>
+          <Col xs={24} lg={18}>
             <Button onClick={() => UploadCaptionModalRef.current.showModal()} block type="primary">Post Caption</Button>
             <Button style={{ marginTop: "1rem" }} onClick={() => logout()} block >Logout</Button>
           </Col>
