@@ -15,7 +15,7 @@ const queryClient = new QueryClient()
 
 // main
 const App = () => {
-  const [collapsed, setcollapsed] = useState(false)
+  const [collapsed, setcollapsed] = useState(true)
   return (
     <AuthContext>
       <BrowserRouter>
