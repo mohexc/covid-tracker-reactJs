@@ -2,10 +2,12 @@
 import React, { useRef } from 'react'
 import { Button, Card, Row, Col } from 'antd';
 import UploadCaptionModal from './CreatePost';
+import { useAuthContext } from '../../../context/AuthContext';
 
 
 const PostCaption = ({ user }) => {
   const UploadCaptionModalRef = useRef()
+  const { logout } = useAuthContext()
   return (
     <React.Fragment>
 
@@ -17,6 +19,7 @@ const PostCaption = ({ user }) => {
           </Col>
           <Col xs={18}>
             <Button onClick={() => UploadCaptionModalRef.current.showModal()} block type="primary">Post Caption</Button>
+            <Button style={{ marginTop: "1rem" }} onClick={() => logout()} block >Logout</Button>
           </Col>
 
         </Row >

@@ -13,6 +13,7 @@ const SignUp = ({ setIsSignUp }) => {
     try {
       const result = await register(values.username, values.email, values.password)
       message.success('Success')
+      setIsSignUp(false)
       return result
     } catch (error) {
       const err = error.res

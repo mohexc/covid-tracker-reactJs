@@ -82,7 +82,7 @@ const Covid19TrackerPage = () => {
   return (
     <Row gutter={[24, 24]} style={{ height: "100%" }}>
       <Col xs={24} lg={14}>
-        <Row align="middle" justify="space-between">
+        <Row align="middle" justify="space-between" style={{ marginBottom: "1rem" }}>
           <Typography.Title level={3}>COVID-19 TRACKER</Typography.Title>
           <Select
             value={countryCode}
@@ -154,10 +154,7 @@ const Covid19TrackerPage = () => {
             </div>
           </Tabs.TabPane>
           <Tabs.TabPane tab="HISTORY CASES" key="2" >
-
             <DynamiChart />
-
-
           </Tabs.TabPane>
         </Tabs>
       </Col>

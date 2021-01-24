@@ -49,10 +49,16 @@ const AuthContext = ({ children }) => {
 
   }
 
+  const logout = async () => {
+    auth.signOut()
+    setuser()
+    localStorage.removeItem('user')
+  }
 
   return (
     <Context.Provider value={{
       user,
+      logout,
       signin,
       register,
     }}>

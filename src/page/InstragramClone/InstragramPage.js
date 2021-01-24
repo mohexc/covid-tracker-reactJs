@@ -41,14 +41,13 @@ const InstragramPage = () => {
   return (
     <div >
       <Row >
-        <Col xs={16} style={{ padding: "1rem" }}>
-          {posts.map(d => <Post username={d.username} caption={d.caption} imageUrl={d.imageUrl} />)}
-        </Col>
-        <Col xs={8} style={{ padding: "1rem" }}>
-
+        <Col xs={24} md={8} style={{ padding: "1rem" }}>
           {user && <PostCaption user={user} />}
-
           <AuthControl />
+        </Col>
+
+        <Col xs={24} md={16} style={{ padding: "1rem" }}>
+          {posts.map(post => <Post key={post.id} postId={post.id} username={post.username} caption={post.caption} imageUrl={post.imageUrl} />)}
         </Col>
       </Row>
     </div>
