@@ -97,7 +97,7 @@ const Covid19TrackerPage = () => {
         </Row>
 
         <Row gutter={[24, 24]} justify='space-between'>
-          <Col xs={8}>
+          <Col xs={24} lg={8}>
             <InfoBox
               isRed
               active={casesType === "cases"}
@@ -106,7 +106,7 @@ const Covid19TrackerPage = () => {
               cases={countryInfo.todayCases}
               total={countryInfo.cases} />
           </Col>
-          <Col xs={8}>
+          <Col xs={24} lg={8}>
             <InfoBox
               isRed
               active={casesType === "recovered"}
@@ -116,7 +116,7 @@ const Covid19TrackerPage = () => {
               cases={countryInfo.todayRecovered}
               total={countryInfo.recovered} />
           </Col>
-          <Col xs={8}>
+          <Col xs={24} lg={8}>
             <InfoBox
               isRed
               active={casesType === "deaths"}

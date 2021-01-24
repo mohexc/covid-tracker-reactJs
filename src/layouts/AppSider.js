@@ -1,7 +1,7 @@
 import React from 'react';
 import { Avatar, Layout, Menu, Row } from 'antd';
 import {
-  VideoCameraOutlined, InstagramOutlined,
+  VideoCameraOutlined, InstagramOutlined, DotChartOutlined,
   // AppstoreOutlined, 
   IdcardOutlined
 } from '@ant-design/icons';
@@ -58,14 +58,19 @@ const AppSider = ({ collapsed }) => {
         {/* <Menu.Item key="1" icon={<AppstoreOutlined />}>
           <Link to="/">app store</Link>
         </Menu.Item> */}
-        <Menu.Item key="2" icon={<VideoCameraOutlined />}>
+        <Menu.Item key="2" icon={<DotChartOutlined />}>
           <Link to="/">covid-19 tracker</Link>
         </Menu.Item>
         <Menu.Item key="3" icon={<InstagramOutlined />} >
           <Link to="/instragram">instragram</Link>
-
         </Menu.Item>
-        <Menu.Item key="4" icon={<IdcardOutlined />} >
+        <Menu.Item key="4" icon={<VideoCameraOutlined />} >
+          <Link to="/instragram">tiktok</Link>
+        </Menu.Item>
+        <Menu.Item key="5" icon={<InstagramOutlined />} >
+          <Link to="/instragram">shoppee</Link>
+        </Menu.Item>
+        <Menu.Item key="6" icon={<IdcardOutlined />} >
           about me
         </Menu.Item>
       </Menu>

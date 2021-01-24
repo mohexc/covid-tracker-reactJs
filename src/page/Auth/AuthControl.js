@@ -1,7 +1,6 @@
 import React, { useState, } from 'react';
 import SignUp from './SignUp';
 import SingIn from './SignIn';
-import UserInfo from './UserInfo';
 import { useAuthContext } from '../../context/AuthContext';
 
 const AuthControl = () => {
@@ -11,7 +10,7 @@ const AuthControl = () => {
   return (
     <React.Fragment>
       {user
-        ? <UserInfo user={user} />
+        ? null
         : isSignUp ? <SignUp setIsSignUp={setIsSignUp} /> : <SingIn setIsSignUp={setIsSignUp} />
       }
 

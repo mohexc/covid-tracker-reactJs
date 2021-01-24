@@ -6,7 +6,7 @@ const Context = React.createContext()
 const AuthContext = ({ children }) => {
 
   // eslint-disable-next-line
-  const [user, setuser] = useState()
+  const [user, setuser] = useState(JSON.parse(localStorage.getItem('user')))
 
   useEffect(() => {
     const unsubscribe = auth.onAuthStateChanged((authUser) => {
@@ -20,6 +20,7 @@ const AuthContext = ({ children }) => {
     try {
       const authUser = await auth.signInWithEmailAndPassword(email, password)
       setuser(authUser.user)
+      localStorage.setItem('user', JSON.stringify(authUser.user))
       debugger
     } catch (error) {
       const err = error.res

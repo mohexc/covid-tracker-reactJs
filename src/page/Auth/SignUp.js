@@ -34,7 +34,7 @@ const SignUp = ({ setIsSignUp }) => {
       >
         <Form.Item
           name="email"
-          rules={[{ required: true, message: 'Please input your Email!', },]}>
+          rules={[{ required: true, message: 'Please input your Username!', },]}>
           <Input prefix={<MailOutlined className="site-form-item-icon" />} placeholder="Email" />
         </Form.Item>
 
@@ -77,7 +77,7 @@ const SignUp = ({ setIsSignUp }) => {
           <span
             className="pointer"
             style={{ color: '#3DB489' }}
-            onClick={() => setIsSignUp(true)}>
+            onClick={() => setIsSignUp(false)}>
             SignIn
           </span>
         </Form.Item>

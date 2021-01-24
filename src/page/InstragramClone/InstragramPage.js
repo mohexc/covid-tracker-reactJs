@@ -4,10 +4,12 @@ import './styles/Instragramm.less'
 import Post from './components/Post';
 import { db } from '../../config/firebase';
 import AuthControl from '../Auth/AuthControl';
+import PostCaption from './components/PostCaption';
+import { useAuthContext } from '../../context/AuthContext';
 
 // main
 const InstragramPage = () => {
-
+  const { user } = useAuthContext()
   const [posts, setPosts] = useState([])
 
   useEffect(() => {
@@ -44,8 +46,9 @@ const InstragramPage = () => {
         </Col>
         <Col xs={8} style={{ padding: "1rem" }}>
 
-          <AuthControl />
+          {user && <PostCaption user={user} />}
 
+          <AuthControl />
         </Col>
       </Row>
     </div>
