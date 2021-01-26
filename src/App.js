@@ -10,6 +10,7 @@ import Covid19TrackerPage from './page/Covid-Tracker/Covid19TrackerPage';
 import InstragramPage from './page/InstragramClone/InstragramPage';
 import AuthContext from './context/AuthContext';
 import { QueryClient, QueryClientProvider } from 'react-query'
+import PeopleInformationList from './page/Form&Table/PeopleInformationList';
 
 const queryClient = new QueryClient()
 
@@ -30,6 +31,7 @@ const App = () => {
                   <Switch>
                     <Route exact path="/"><Covid19TrackerPage /></Route>
                     <Route exact path="/instragram"><InstragramPage /></Route>
+                    <Route exact path="/peopleinformation"><PeopleInformationList /></Route>
                   </Switch>
                 </div>
 
