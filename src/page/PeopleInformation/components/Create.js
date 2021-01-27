@@ -25,7 +25,7 @@ const prefixSelector = (
 
 
 // main
-const PersonalInformationForm = () => {
+const Create = () => {
 
   const onFinish = (values) => {
     console.log(values)
@@ -127,4 +127,4 @@ const PersonalInformationForm = () => {
   )
 }
 
-export default PersonalInformationForm
+export default Create
