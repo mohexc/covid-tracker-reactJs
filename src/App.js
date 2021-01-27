@@ -10,7 +10,7 @@ import Covid19TrackerPage from './page/Covid-Tracker/Covid19TrackerPage';
 import InstragramPage from './page/InstragramClone/InstragramPage';
 import AuthContext from './context/AuthContext';
 import { QueryClient, QueryClientProvider } from 'react-query'
-import PeopleInformationList from './page/Form&Table/PeopleInformationList';
+import PeopleInformationList from './page/PeopleInformation/PeopleInformationList';
 
 const queryClient = new QueryClient()
 
