@@ -14,7 +14,7 @@ const PeopleInformationTable = () => {
   const [choosedRows, setChoosedRows] = useState([])
   const { getPeoplelInfo, peopleInfoList } = usePersonalInfoContext()
 
-  // const showPersonalModalRef = useRef()
+  const showPersonalModalRef = useRef()
   // const createPersonModalRef = useRef()
   const editPersonalModalRef = useRef()
   const deletePersonalModalRef = useRef()
@@ -37,8 +37,9 @@ const PeopleInformationTable = () => {
     if (key === 'edit') return editPersonalModalRef.current.showModal(record)
 
     if (key === "delete") return deletePersonalModalRef.current.showModal(record)
-  }
 
+    if (key === 'show') return showPersonalModalRef.current.showModal(record)
+  }
 
   const rowSelection = {
     onChange: (selectedRowKeys, selectedRows) => {
@@ -46,7 +47,6 @@ const PeopleInformationTable = () => {
       setChoosedRows(selectedRows)
     },
   };
-
 
   const columns = [
     {
@@ -108,7 +108,7 @@ const PeopleInformationTable = () => {
         dataSource={dataTable}
         pagination={{ position: ['topRight', 'bottomRight'] }}
       />
-      <ShowPersonalModal />
+      <ShowPersonalModal ref={showPersonalModalRef} />
       <CreatePersonalModal />
       <EditPersonalModal ref={editPersonalModalRef} />
       <DeletePersonalModal ref={deletePersonalModalRef} />
