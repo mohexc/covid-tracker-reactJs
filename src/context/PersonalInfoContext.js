@@ -14,7 +14,7 @@ const PersonalInfoContext = ({ children }) => {
 
     const result = peopleInfoList.map(personal => {
       return {
-        _id: personal.id,
+        _id: personal._id,
         name: `${personal.titleName} ${personal.firstName} ${personal.lastName}`,
         gender: personal.gender,
         phone: `+${personal.prefixPhone}${personal.phone}`,

@@ -17,22 +17,27 @@ const PeopleInformationTable = () => {
 
   const columns = [
     {
+      key: "name",
       title: "Name",
       render: (row) => <span>{row.name}</span>
     },
     {
+      key: "gender",
       title: "Gender",
       render: (row) => <span>{row.gender}</span>
     },
     {
+      key: "mobilePhone",
       title: "Mobile Phone",
       render: (row) => <span>{row.phone}</span>
     },
     {
+      key: "nationality",
       title: "Nationality",
       render: (row) => <span>{row.nationlity}</span>
     },
     {
+      key: "operation",
       title: "Operation",
       width: "10%",
       render: (row) => <ListOperation id={row.id} />
@@ -74,13 +79,12 @@ const PeopleInformationTable = () => {
       </Row>
 
       <Table
-        rowKey="_id"
+        rowKey={(record) => record._id}
         rowSelection={{ ...rowSelection }}
         bordered
         columns={columns}
         dataSource={dataTable}
         pagination={{ position: ['topRight', 'bottomRight'] }}
-
       />
     </Card>
   )

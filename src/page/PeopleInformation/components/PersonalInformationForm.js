@@ -3,6 +3,7 @@ import { Card, DatePicker, Form, Input, Radio, Select, Typography, Button, Row, 
 import { countries } from 'countries-list'
 import moment from 'moment'
 import { usePersonalInfoContext } from '../../../context/PersonalInfoContext'
+import { useForm } from 'antd/lib/form/Form'
 
 const countriesList = () => {
   let list = []
@@ -29,6 +30,8 @@ const prefixSelector = (
 const PersonalInformationForm = () => {
   const { createPersonalInfo } = usePersonalInfoContext()
 
+  const [form] = Form.useForm();
+
   const onFinish = async (values) => {
     try {
       const birthDay = moment(values.birthDay).format("DD-MM-YYYY")
@@ -43,10 +46,35 @@ const PersonalInformationForm = () => {
     }
   }
 
+  const handleReset = () => {
+    form.resetFields();
+  };
+
+  const handleOnFill = () => {
+    try {
+      form.setFieldsValue({
+        citizenId: [1, 2222, 33333, 44, 5],
+        expectedSalary: "4000000",
+        firstName: "John",
+        gender: "female",
+        lastName: "Doe",
+        nationlity: "Thailand",
+        passportNumber: "cxcvcxvx",
+        phone: "061888999",
+        prefixPhone: "66",
+        titleName: "Mrs.",
+      });
+    } catch (error) {
+      message.error(error)
+    }
+
+  };
+
   return (
     <Card style={{ borderRadius: "10px", marginBottom: "1rem" }}>
       <Typography.Title level={4}>Personal Information Form</Typography.Title>
       <Form
+        form={form}
         labelAlign='left'
         onFinish={onFinish}
         initialValues={{ prefixPhone: '66', }}>
@@ -87,7 +115,7 @@ const PersonalInformationForm = () => {
                 placeholder="Search to Select"
                 style={{ width: "100%" }}
               >
-                {countriesList().map(country => <Select.Option key={country.name} value={country.name}><spa>{country.name}</spa></Select.Option>)}
+                {countriesList().map(country => <Select.Option key={country.name} value={country.name}><span>{country.name}</span></Select.Option>)}
               </Select>
             </Form.Item>
           </Col>
@@ -179,12 +207,14 @@ const PersonalInformationForm = () => {
           <Input type="number" style={{ width: "200px" }} />
         </Form.Item>
 
-        <Row>
-          <Col xs={{ span: 24 }} md={{ span: 4, offset: 20 }}>
+        <Row gutter={[24, 24]}>
+          <Col xs={{ span: 24 }} md={{ span: 4, offset: 12 }}>
             <Form.Item noStyle >
               <Button block htmlType="submit" type="primary">SUBMIT</Button >
             </Form.Item>
           </Col>
+          <Col xs={24} md={4}><Button block onClick={handleReset}>RESET</Button></Col>
+          <Col xs={24} md={4}><Button block onClick={handleOnFill}>FILL FORM</Button></Col>
         </Row>
 
       </Form>
