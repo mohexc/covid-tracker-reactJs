@@ -16,7 +16,7 @@ const PeopleInformationTable = () => {
 
   // const showPersonalModalRef = useRef()
   // const createPersonModalRef = useRef()
-  // const editPersonalModalRef = useRef()
+  const editPersonalModalRef = useRef()
   // const deletePersonalModalRef = useRef()
   const deletePeopleModalRef = useRef()
 
@@ -25,6 +25,25 @@ const PeopleInformationTable = () => {
     setDataTable(data)
     // eslint-disable-next-line
   }, [peopleInfoList])
+
+  const handleSearch = (values) => {
+
+  }
+
+  const openModal = (key, record) => {
+    debugger
+    if (key === 'edit') {
+      editPersonalModalRef.current.showModal(record)
+    }
+
+  }
+
+  const rowSelection = {
+    onChange: (selectedRowKeys, selectedRows) => {
+      // console.log(`selectedRowKeys: ${selectedRowKeys}`, 'selectedRows: ', selectedRows);
+      setChoosedRows(selectedRows)
+    },
+  };
 
 
   const columns = [
@@ -52,24 +71,10 @@ const PeopleInformationTable = () => {
       key: "operation",
       title: "Operation",
       width: "10%",
-      render: (record) => <ListOperation record={record} />
+      render: (record) => <ListOperation record={record} openModal={openModal} />
 
     },
   ]
-
-  const handleSearch = (values) => {
-
-  }
-
-
-  const rowSelection = {
-    onChange: (selectedRowKeys, selectedRows) => {
-      // console.log(`selectedRowKeys: ${selectedRowKeys}`, 'selectedRows: ', selectedRows);
-      setChoosedRows(selectedRows)
-    },
-
-  };
-
 
   return (
     <Card style={{ borderRadius: "10px" }}>
@@ -103,7 +108,7 @@ const PeopleInformationTable = () => {
       />
       <ShowPersonalModal />
       <CreatePersonalModal />
-      <EditPersonalModal />
+      <EditPersonalModal ref={editPersonalModalRef} />
       <DeletePersonalModal />
       <DeletePeopleModal ref={deletePeopleModalRef} />
     </Card>

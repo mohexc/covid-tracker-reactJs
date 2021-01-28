@@ -12,7 +12,8 @@ const PersonalInfoContext = ({ children }) => {
   }
 
   const getPersonalInfo = (id) => {
-
+    const personal = peopleInfoList.find(personal => personal._id === id)
+    return personal
   }
 
   const getPeoplelInfo = (name) => {
@@ -35,8 +36,12 @@ const PersonalInfoContext = ({ children }) => {
     saveData(temp)
   }
 
-  const editPersonalInfo = (id) => {
-
+  const editPersonalInfo = (id, values) => {
+    const temps = [...peopleInfoList]
+    const findIndex = temps.findIndex(people => people._id === id)
+    debugger
+    temps[findIndex] = values
+    saveData(temps)
   }
 
   const deletePersonalInfo = (id) => {

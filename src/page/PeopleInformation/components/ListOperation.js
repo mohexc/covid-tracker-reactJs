@@ -1,16 +1,16 @@
 import React from 'react';
 import { Dropdown, Menu } from 'antd';
 import { CaretDownOutlined } from '@ant-design/icons';
-const ListOperation = ({ record, show }) => {
+const ListOperation = ({ record, openModal }) => {
 
   const handleMenuClick = (values) => {
-    console.log(values)
-    debugger
+    openModal(values.key, record)
+
   }
   const menu = (
     <Menu onClick={handleMenuClick}>
-      <Menu.Item style={{ minWidth: "80px" }}> <span >Edit</span></Menu.Item>
-      <Menu.Item style={{ minWidth: "80px" }} > <span style={{ width: "150px" }}>View</span></Menu.Item>
+      <Menu.Item key="edit" style={{ minWidth: "80px" }}> <span >Edit</span></Menu.Item>
+      <Menu.Item key="delte" style={{ minWidth: "80px" }} > <span style={{ width: "150px" }}>Delete</span></Menu.Item>
     </Menu>
   );
   return (

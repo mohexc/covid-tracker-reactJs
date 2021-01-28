@@ -3,7 +3,6 @@ import { Card, DatePicker, Form, Input, Radio, Select, Typography, Button, Row, 
 import { countries } from 'countries-list'
 import moment from 'moment'
 import { usePersonalInfoContext } from '../../../context/PersonalInfoContext'
-import { useForm } from 'antd/lib/form/Form'
 
 const countriesList = () => {
   let list = []
@@ -25,7 +24,6 @@ const prefixSelector = (
   </Form.Item>
 );
 
-
 // main
 const PersonalInformationForm = () => {
   const { createPersonalInfo } = usePersonalInfoContext()
@@ -34,7 +32,7 @@ const PersonalInformationForm = () => {
 
   const onFinish = async (values) => {
     try {
-      const birthDay = moment(values.birthDay).format("DD-MM-YYYY")
+      const birthDay = moment(values.birthDay).format()
       values.birthDay = birthDay
       createPersonalInfo(values)
       message.success("Save Success")
