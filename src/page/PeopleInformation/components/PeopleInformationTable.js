@@ -27,7 +27,9 @@ const PeopleInformationTable = () => {
   }, [peopleInfoList])
 
   const handleSearch = (values) => {
-
+    const data = getPeoplelInfo(values)
+    debugger
+    setDataTable(data)
   }
 
   const openModal = (key, record) => {

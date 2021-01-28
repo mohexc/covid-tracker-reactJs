@@ -1,5 +1,6 @@
 import React, { useState, useContext } from 'react'
 import { v4 as uuidv4 } from 'uuid';
+import capitalizeFirstLetter from '../utils/capitalizeFirstLetter';
 
 const Context = React.createContext()
 
@@ -17,6 +18,24 @@ const PersonalInfoContext = ({ children }) => {
   }
 
   const getPeoplelInfo = (name) => {
+    if (name) {
+      const temps = [...peopleInfoList]
+      const filter = temps.filter(people => {
+        const peopleCapital = capitalizeFirstLetter(people.firstName)
+        const nameCap = capitalizeFirstLetter(name)
+        return peopleCapital.startsWith(nameCap)
+      })
+      const result = filter.map(personal => {
+        return {
+          _id: personal._id,
+          name: `${personal.titleName} ${personal.firstName} ${personal.lastName}`,
+          gender: personal.gender,
+          phone: `+${personal.prefixPhone}${personal.phone}`,
+          nationlity: personal.nationlity
+        }
+      })
+      return result
+    }
 
     const result = peopleInfoList.map(personal => {
       return {
@@ -40,7 +59,7 @@ const PersonalInfoContext = ({ children }) => {
     const temps = [...peopleInfoList]
     const findIndex = temps.findIndex(people => people._id === id)
     debugger
-    temps[findIndex] = values
+    temps[findIndex] = { ...values, _id: id }
     saveData(temps)
   }
 
