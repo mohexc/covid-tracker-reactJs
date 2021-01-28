@@ -17,7 +17,7 @@ const PeopleInformationTable = () => {
   // const showPersonalModalRef = useRef()
   // const createPersonModalRef = useRef()
   const editPersonalModalRef = useRef()
-  // const deletePersonalModalRef = useRef()
+  const deletePersonalModalRef = useRef()
   const deletePeopleModalRef = useRef()
 
   useEffect(() => {
@@ -32,11 +32,11 @@ const PeopleInformationTable = () => {
 
   const openModal = (key, record) => {
     debugger
-    if (key === 'edit') {
-      editPersonalModalRef.current.showModal(record)
-    }
+    if (key === 'edit') return editPersonalModalRef.current.showModal(record)
 
+    if (key === "delete") return deletePersonalModalRef.current.showModal(record)
   }
+
 
   const rowSelection = {
     onChange: (selectedRowKeys, selectedRows) => {
@@ -109,7 +109,7 @@ const PeopleInformationTable = () => {
       <ShowPersonalModal />
       <CreatePersonalModal />
       <EditPersonalModal ref={editPersonalModalRef} />
-      <DeletePersonalModal />
+      <DeletePersonalModal ref={deletePersonalModalRef} />
       <DeletePeopleModal ref={deletePeopleModalRef} />
     </Card>
   )

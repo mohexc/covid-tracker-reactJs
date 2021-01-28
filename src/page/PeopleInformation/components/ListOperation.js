@@ -10,7 +10,7 @@ const ListOperation = ({ record, openModal }) => {
   const menu = (
     <Menu onClick={handleMenuClick}>
       <Menu.Item key="edit" style={{ minWidth: "80px" }}> <span >Edit</span></Menu.Item>
-      <Menu.Item key="delte" style={{ minWidth: "80px" }} > <span style={{ width: "150px" }}>Delete</span></Menu.Item>
+      <Menu.Item key="delete" style={{ minWidth: "80px" }} > <span style={{ width: "150px" }}>Delete</span></Menu.Item>
     </Menu>
   );
   return (
