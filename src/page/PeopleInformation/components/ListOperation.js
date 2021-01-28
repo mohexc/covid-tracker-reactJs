@@ -1,10 +1,11 @@
 import React from 'react';
 import { Dropdown, Menu } from 'antd';
 import { CaretDownOutlined } from '@ant-design/icons';
-const ListOperation = () => {
+const ListOperation = ({ record, show }) => {
 
   const handleMenuClick = (values) => {
-
+    console.log(values)
+    debugger
   }
   const menu = (
     <Menu onClick={handleMenuClick}>

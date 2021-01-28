@@ -6,6 +6,11 @@ const Context = React.createContext()
 const PersonalInfoContext = ({ children }) => {
   const [peopleInfoList, setPeopleInfoList] = useState(JSON.parse(localStorage.getItem('peopleInfoList')) || [])
 
+  const saveData = (data) => {
+    setPeopleInfoList(data)
+    localStorage.setItem('peopleInfoList', JSON.stringify(data))
+  }
+
   const getPersonalInfo = (id) => {
 
   }
@@ -27,8 +32,7 @@ const PersonalInfoContext = ({ children }) => {
   const createPersonalInfo = (data) => {
     data._id = uuidv4()
     const temp = [...peopleInfoList, data]
-    setPeopleInfoList(temp)
-    localStorage.setItem('peopleInfoList', JSON.stringify(temp))
+    saveData(temp)
   }
 
   const editPersonalInfo = (id) => {
@@ -36,8 +40,19 @@ const PersonalInfoContext = ({ children }) => {
   }
 
   const deletePersonalInfo = (id) => {
+    const temps = [...peopleInfoList]
+    const filterPeopleInfoList = temps.filter(tem => tem._id !== id)
+    saveData(filterPeopleInfoList)
+  }
+
+  const deleteAllPeoPlelInfo = (values) => {
+    const listId = values.map(element => element._id)
+    const temps = [...peopleInfoList]
+    const filterPeopleInfoList = temps.filter(temp => !listId.includes(temp._id))
+    saveData(filterPeopleInfoList)
 
   }
+
 
   return (
     <Context.Provider value={{
@@ -46,7 +61,8 @@ const PersonalInfoContext = ({ children }) => {
       getPersonalInfo,
       createPersonalInfo,
       editPersonalInfo,
-      deletePersonalInfo
+      deletePersonalInfo,
+      deleteAllPeoPlelInfo
     }}>
       {children}
     </Context.Provider>

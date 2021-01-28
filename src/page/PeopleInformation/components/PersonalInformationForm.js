@@ -18,7 +18,7 @@ const prefixSelector = (
       {countriesList().map(country => <Select.Option key={country.name} value={country.phone}>
         <Row justify="space-between">
           <span>{country.emoji}</span>
-          <span> +{country.phone}</span>
+          <span>+{country.phone}</span>
         </Row>
       </Select.Option>)}
     </Select>
@@ -46,9 +46,7 @@ const PersonalInformationForm = () => {
     }
   }
 
-  const handleReset = () => {
-    form.resetFields();
-  };
+  const handleReset = () => form.resetFields();
 
   const handleOnFill = () => {
     try {
