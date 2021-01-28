@@ -16,15 +16,13 @@ const getContriesInfo = async (day) => {
       const values = []
       for (const property in d.cases) {
         values.push({
-          "id": `${d.country}`,
+          "id": `${d.country}${index}`,
           "label": `${d.country}`,
           "value": `${d.cases[property]}`,
         })
       }
       return values
     })
-    console.log(mappedValues)
-    debugger
 
     const mappedName = date.map((day, index) => {
       const values = mappedValues.map((v) => v[index])
@@ -33,8 +31,6 @@ const getContriesInfo = async (day) => {
         "values": values
       }
     })
-    // setstate(mappedName)
-    debugger
     return mappedName
   } catch (error) {
     const result = error.response

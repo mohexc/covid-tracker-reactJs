@@ -1,9 +1,19 @@
-import { Card, Select, Table, Row, Col, Input, Button } from 'antd'
-import React from 'react'
+import { Card, Table, Row, Col, Input, Button } from 'antd'
+import { Handler } from 'leaflet'
+import React, { useEffect, useState } from 'react'
+import { usePersonalInfoContext } from '../../../context/PersonalInfoContext'
+import ListOperation from './ListOperation'
 
-
-
+// main
 const PeopleInformationTable = () => {
+  const [dataTable, setDataTable] = useState([])
+  const { getPeoplelInfo, peopleInfoList } = usePersonalInfoContext()
+
+  useEffect(() => {
+    const data = getPeoplelInfo()
+    setDataTable(data)
+    // eslint-disable-next-line
+  }, [peopleInfoList])
 
   const columns = [
     {
@@ -25,21 +35,25 @@ const PeopleInformationTable = () => {
     {
       title: "Operation",
       width: "10%",
-      render: (row) => {
+      render: (row) => <ListOperation id={row.id} />
 
-        return <Select placeholder="Opeartion" style={{ width: "100%" }}></Select>
-      }
     },
   ]
-  const data = [
-    {
-      id: '1',
-      name: "Nut Prohmpiriya",
-      gender: "Femal",
-      phone: "+661234567890",
-      nationlity: "Thai"
-    }
-  ]
+
+  const handleSearch = (values) => {
+
+  }
+
+  const handlerDeleateAll = () => {
+
+  }
+
+  const rowSelection = {
+    onChange: (selectedRowKeys, selectedRows) => {
+      console.log(`selectedRowKeys: ${selectedRowKeys}`, 'selectedRows: ', selectedRows);
+    },
+
+  };
 
 
   return (
@@ -47,23 +61,24 @@ const PeopleInformationTable = () => {
       <Row align="middle" style={{ marginBottom: "1rem" }}>
         <Col lg={12}>
           <Row align="middle" gutter={[24]}>
-            <Col xs={4}> <h1><strong>All</strong> : 20</h1></Col>
-            <Col xs={4}><Button type="primary" block>Delete</Button></Col>
+            <Col xs={4}> <h1><strong>All</strong> : {dataTable.length}</h1></Col>
+            <Col xs={4}><Button type="primary" block onClick={handlerDeleateAll}>Delete</Button></Col>
           </Row>
         </Col>
         <Col lg={12}>
           <Row gutter={[24]}>
-            <Col xs={16}> <Input.Search enterButton /></Col>
-            <Col xs={8}><Button type="primary" block>Create</Button></Col>
+            <Col xs={{ span: 12, offset: 12 }}> <Input.Search onSearch={handleSearch} enterButton /></Col>
+            {/* <Col xs={8}><Button type="primary" block>Create</Button></Col> */}
           </Row>
-
-
         </Col>
       </Row>
+
       <Table
+        rowKey="_id"
+        rowSelection={{ ...rowSelection }}
         bordered
         columns={columns}
-        dataSource={data}
+        dataSource={dataTable}
         pagination={{ position: ['topRight', 'bottomRight'] }}
 
       />

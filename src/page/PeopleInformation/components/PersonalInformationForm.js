@@ -1,7 +1,8 @@
 import React from 'react'
-import { Card, DatePicker, Form, Input, Radio, Select, Typography, Button, Row, Col } from 'antd'
+import { Card, DatePicker, Form, Input, Radio, Select, Typography, Button, Row, Col, InputNumber, message } from 'antd'
 import { countries } from 'countries-list'
-
+import moment from 'moment'
+import { usePersonalInfoContext } from '../../../context/PersonalInfoContext'
 
 const countriesList = () => {
   let list = []
@@ -15,8 +16,8 @@ const prefixSelector = (
     <Select allowClear showSearch style={{ width: '100px', }}>
       {countriesList().map(country => <Select.Option key={country.name} value={country.phone}>
         <Row justify="space-between">
-          <spa>{country.emoji}</spa>
-          <spa> +{country.phone}</spa>
+          <span>{country.emoji}</span>
+          <span> +{country.phone}</span>
         </Row>
       </Select.Option>)}
     </Select>
@@ -26,9 +27,20 @@ const prefixSelector = (
 
 // main
 const PersonalInformationForm = () => {
+  const { createPersonalInfo } = usePersonalInfoContext()
 
-  const onFinish = (values) => {
-    console.log(values)
+  const onFinish = async (values) => {
+    try {
+      const birthDay = moment(values.birthDay).format("DD-MM-YYYY")
+      values.birthDay = birthDay
+      createPersonalInfo(values)
+      message.success("Save Success")
+    } catch (error) {
+      const result = error.response
+        ? error.response.data.message
+        : error.response
+      message.error(result)
+    }
   }
 
   return (
@@ -52,14 +64,17 @@ const PersonalInformationForm = () => {
             </Form.Item>
           </Col>
           <Col xs={9}>
-            <Form.Item name='lastName' label="Last Name" rules={[{ required: true, message: 'Please input your Last name!', },]}>
+            <Form.Item
+              name='lastName'
+              label="Last Name"
+              rules={[{ required: true, message: 'Please input your Last name!', },]}>
               <Input />
             </Form.Item>
           </Col>
         </Row>
         <Row gutter={24}>
           <Col xs={6}>
-            <Form.Item name='birtday' label="Birthday" rules={[{ required: true, message: 'Please input your Birthday!', },]}>
+            <Form.Item name='birthDay' label="Birthday" rules={[{ required: true, message: 'Please input your Birthday!', },]}>
               <DatePicker format={'DD/MM/YYYY'} style={{ width: "100%" }} />
             </Form.Item>
           </Col>
@@ -77,14 +92,69 @@ const PersonalInformationForm = () => {
             </Form.Item>
           </Col>
         </Row>
-        <Form.Item name='citizenId' label='Citizen ID' style={{ marginBottom: '0px' }}>
+
+        {/* citizenId */}
+        <Form.Item name='citizenId' label={<span><span style={{ color: "red" }}>*</span><span> Citizen ID</span></span>} style={{ marginBottom: '0px' }}>
           <Input.Group>
-            <Row gutter={16}>
-              <Col span={2}><Form.Item name={['citizenId', 0]}><Input maxLength="1" /></Form.Item></Col>
-              <Col span={4}><Form.Item name={['citizenId', 1]}><Input maxLength="4" /></Form.Item></Col>
-              <Col span={5}><Form.Item name={['citizenId', 2]}><Input maxLength="5" /></Form.Item></Col>
-              <Col span={3}><Form.Item name={['citizenId', 3]}><Input maxLength="2" /></Form.Item></Col>
-              <Col span={2}><Form.Item name={['citizenId', 4]}><Input maxLength="1" /></Form.Item></Col>
+            <Row gutter={24}>
+              <Col span={2}><Form.Item rules={[
+                { type: "number", required: true, message: "Please input your Number!" },
+                {
+                  validator: (_, value) => {
+                    if (value.toString().length < 1) {
+                      return Promise.reject('Please complete 1 characters.')
+                    }
+                    return Promise.resolve()
+                  }
+                }
+              ]} name={['citizenId', 0]}>
+                <InputNumber maxLength="1" style={{ width: '100%' }} />
+              </Form.Item>
+              </Col>
+              <Col span={3}><Form.Item rules={[
+                { type: "number", required: true, message: "Please input your Number!" },
+                {
+                  validator: (_, value) => {
+                    if (value.toString().length < 4) {
+                      return Promise.reject('Please complete 4 characters.')
+                    }
+                    return Promise.resolve()
+                  }
+                }
+              ]} name={['citizenId', 1]}><InputNumber maxLength="4" style={{ width: '100%' }} /></Form.Item></Col>
+              <Col span={4}><Form.Item rules={[
+                { type: "number", required: true, message: "Please input your Number!" },
+                {
+                  validator: (_, value) => {
+                    if (value.toString().length < 5) {
+                      return Promise.reject('Please complete 5 characters.')
+                    }
+                    return Promise.resolve()
+                  }
+                }
+              ]} name={['citizenId', 2]}><InputNumber maxLength="5" style={{ width: '100%' }} /></Form.Item></Col>
+              <Col span={2}><Form.Item rules={[
+                { type: "number", required: true, message: "Please input your Number!" },
+                {
+                  validator: (_, value) => {
+                    if (value.toString().length < 2) {
+                      return Promise.reject('Please complete 2 characters.')
+                    }
+                    return Promise.resolve()
+                  }
+                }
+              ]} name={['citizenId', 3]}><InputNumber maxLength="2" style={{ width: '100%' }} /></Form.Item></Col>
+              <Col span={2}><Form.Item rules={[
+                { type: "number", required: true, message: "Please input your Number!" },
+                {
+                  validator: (_, value) => {
+                    if (value.toString().length < 1) {
+                      return Promise.reject('Please complete 1 characters.')
+                    }
+                    return Promise.resolve()
+                  }
+                }
+              ]} name={['citizenId', 4]}><InputNumber maxLength="1" style={{ width: '100%' }} /></Form.Item></Col>
             </Row>
           </Input.Group>
         </Form.Item>
@@ -102,14 +172,11 @@ const PersonalInformationForm = () => {
         </Form.Item>
 
         <Form.Item name="passportNumber" label="Passport number" rules={[{ required: true, message: 'Please input your Passport number!' }]}>
-          <Input type="number" style={{ width: "200px" }} />
+          <Input style={{ width: "200px" }} />
         </Form.Item>
 
-        <Form.Item name="expectedSalary">
-          <Form.Item label="Expected Salary" >
-            <Input style={{ width: "200px" }} />
-            <span className="m1"> THB</span>
-          </Form.Item>
+        <Form.Item name="expectedSalary" label="Expected Salary" rules={[{ required: true, message: "Please input your Number!" }]}>
+          <Input type="number" style={{ width: "200px" }} />
         </Form.Item>
 
         <Row>
@@ -121,8 +188,6 @@ const PersonalInformationForm = () => {
         </Row>
 
       </Form>
-
-
     </Card>
   )
 }

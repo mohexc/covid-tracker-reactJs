@@ -23,6 +23,7 @@ const casesTypeColors = {
 export default (data, casesType = "cases") =>
   data.map((country) => (
     <Circle
+      key={country.country}
       center={[country.countryInfo.lat, country.countryInfo.long]}
       pathOptions={{
         color: casesTypeColors[casesType].color,
