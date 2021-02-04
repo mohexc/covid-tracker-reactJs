@@ -21,9 +21,9 @@ const PersonalInfoContext = ({ children }) => {
     if (name) {
       const temps = [...peopleInfoList]
       const filter = temps.filter(people => {
-        const peopleCapital = capitalizeFirstLetter(people.firstName)
-        const nameCap = capitalizeFirstLetter(name)
-        return peopleCapital.startsWith(nameCap)
+        const peopleTolowercase = people.firstName.tolowercase()
+        const nameTolowercase = name.tolowercase()
+        return peopleTolowercase.startsWith(nameTolowercase)
       })
       const result = filter.map(personal => {
         return {
